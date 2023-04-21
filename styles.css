@@ -77,6 +77,8 @@ td {
     calc(var(--timeline-offset) + var(--offset-left, 0px) - var(--scroll-x)),
     var(--timeline-offset)
   );
+  opacity: var(--label-opacity, 1);
+  transition: opacity 0.2s linear;
 }
 .bar {
   --start-color: red;
