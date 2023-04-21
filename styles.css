@@ -83,6 +83,7 @@ td {
   --end-color: red;
   --start-gradient-distance: 30px;
   --end-gradient-distance: 30px;
+
   /* IMPORTANT: positioned relative to the width of the timeline, rather than width of bar */
   /* left: var(--offset-left); */
   /* right: var(--offset-right); */
@@ -164,8 +165,7 @@ td {
   /* --offset-left: var(--scroll-x); */
 }
 .bar[start][end] {
-  --start-color: blue;
-  --end-color: blue;
+  background: blue;
 }
 
 .timeline-inner {
