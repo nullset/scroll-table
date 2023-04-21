@@ -170,6 +170,12 @@ td {
 .bar[start][end] {
   --start-color: blue;
   --end-color: blue;
+
+  /* width: calc(
+    var(--parent-width) - var(--timeline-offset) + var(--scroll-x) -
+      var(--bar-width, 0px) - var(--offset-left, 0px) - var(--offset-right, 0px)
+  ); */
+  width: calc(100% - var(--offset-left) - var(--offset-right));
 }
 .timeline-inner {
   display: flex;
