@@ -45,59 +45,22 @@ td {
   left: 200px;
 }
 
-.label2 {
-  /* position: sticky;
-  left: 302px; */
-  /* position: absolute; */
-  /* left: calc((var(--timeline-width) / var(--scroll-x) / 100%) +1px); */
-  /* left: var(--scroll-x); */
-  /* position: sticky;
-  left: calc(var(--timeline-offset) + var(--border-width)); */
-}
 .bar-wrapper {
-  --offset-left: calc(var(--timeline-width) * var(--bar-left-ratio));
-  --offset-right: calc(var(--timeline-width) * var(--bar-right-ratio));
+  --offset-left: calc(var(--timeline-width) * var(--bar-left-ratio, 0));
+  --offset-right: calc(var(--timeline-width) * var(--bar-right-ratio, 0));
 
   position: sticky;
 }
 .bar-wrapper:not([start]):not([end]) {
   --start-color: transparent;
-  left: calc(var(--timeline-offset) + var(--border-width));
   --end-color: transparent;
-  width: calc(var(--parent-width) - var(--timeline-offset));
-  max-width: calc(100% - var(--scroll-x));
+  /* left: calc(var(--timeline-offset) + var(--border-width)); */
 }
-/* .bar-wrapper:not([start]) {
-  --start-color: transparent;
-  left: calc(var(--timeline-offset) + var(--border-width));
-}
-.bar-wrapper:not([end]) {
-  --end-color: transparent;
-  width: calc(var(--parent-width) - var(--timeline-offset));
-  max-width: calc(100% - var(--scroll-x));
-} */
 .bar-wrapper[start]:not([end]) {
   --start-color: purple;
-
-  /* Working for bars with [start] and with or without a left offset. */
-  width: calc(
-    var(--parent-width) - var(--timeline-offset) + var(--scroll-x) -
-      var(--bar-width, 0px) - var(--offset-left, 0px) - var(--offset-right, 0px)
-  );
-  max-width: calc(100% - var(--bar-left-percent, 0%));
 }
 .bar-wrapper[end]:not([start]) {
   --end-color: lime;
-  /* max-width: calc(100% - var(--scroll-x)); */
-  /* max-width: calc(100% - var(--bar-right-percent, 0%) - var(--scroll-x));
-  --offset-left: var(--scroll-x);
-
-  width: calc(
-    var(--parent-width) - var(--timeline-offset) + var(--scroll-x) -
-      var(--bar-width, 0px) - var(--offset-left, 0px) - var(--offset-right, 0px)
-  ); */
-
-  /* left: calc(var(--timeline-offset) + var(--border-width)); */
 }
 .bar-wrapper[start][end] {
   --start-color: blue;
@@ -106,18 +69,9 @@ td {
 .label,
 .bar {
   position: relative;
-
-  /* IMPORTANT: positioned relative to the width of the timeline, rather than width of bar */
-  /* left: calc(var(--timeline-width) * var(--bar-left-ratio)); */
-  left: var(--offset-left);
-  right: var(--offset-right);
-
-  /* max-width: calc(100% - var(--bar-left-percent)); */
-  /* max-width: calc(100% - calc(var(--bar-left-ratio) * 100%)); */
 }
 .label {
   position: sticky;
-  /* left: calc(var(--timeline-offset) + var(--offset-left, 0px)); */
   left: max(
     calc(var(--timeline-offset) + var(--offset-left, 0px) - var(--scroll-x)),
     var(--timeline-offset)
@@ -126,57 +80,85 @@ td {
 .bar {
   --start-color: red;
   --end-color: red;
+  --start-gradient-distance: 30px;
+  --end-gradient-distance: 30px;
+  /* IMPORTANT: positioned relative to the width of the timeline, rather than width of bar */
+  /* left: var(--offset-left); */
+  /* right: var(--offset-right); */
+
   display: block;
+  /* background: linear-gradient(
+    to right,
+    var(--start-color) calc(var(--offset-left, 0px) + var(--scroll-x)),
+    red calc(var(--offset-left, 0px) + 30px + var(--scroll-x)),
+    red calc(100% - var(--offset-right, 0px) - 30px + var(--scroll-x)),
+    var(--end-color) calc(100% - var(--offset-right, 0px) + var(--scroll-x))
+  ); */
   background: linear-gradient(
     to right,
-    var(--start-color) 0px,
-    red 30px,
-    red calc(100% - 30px),
-    var(--end-color) 100%
+    var(--start-color) var(--start-gradient-offset),
+    red calc(var(--start-gradient-offset) + var(--start-gradient-distance)),
+    red calc(var(--end-gradient-offset) - var(--end-gradient-distance)),
+    var(--end-color) var(--end-gradient-offset)
   );
+
   height: 12px;
   position: relative;
 }
+
 .bar:not([start]) {
   --start-color: transparent;
-  /* left: calc(var(--timeline-offset) + var(--border-width)); */
+  --start-gradient-offset: calc(var(--offset-left) + var(--scroll-x));
 }
 .bar:not([end]) {
   --end-color: transparent;
-  /* width: calc(var(--parent-width) - var(--timeline-offset)); */
-  /* max-width: calc(100% - var(--scroll-x)); */
+  --end-gradient-offset: calc(
+    var(--parent-width) - var(--timeline-offset) + var(--scroll-x) -
+      var(--offset-left)
+  );
+}
+
+.bar:not([start]):not([end]) {
+  /* --start-gradient-offset: calc(var(--offset-left) + var(--scroll-x)); */
+  /* --end-gradient-offset: calc(
+    var(--parent-width) - var(--timeline-offset) + var(--scroll-x)
+  ); */
+}
+.bar[start],
+.bar[end] {
+  --bar-width: calc(
+    var(--timeline-width) - var(--bar-left-percent, 0%) -
+      var(--bar-right-percent, 0%)
+  );
+  width: var(--bar-width);
+}
+.bar[start] {
+  left: var(--offset-left);
+}
+.bar[start]:not([end]) {
+  --start-gradient-offset: 0px;
+  --start-gradient-distance: 0px;
+}
+.bar:not([start])[end] {
+  --end-gradient-offset: 0px;
+  /* --end-gradient-distance: 0px; */
+}
+
+.bar:not([start]):not([end]) {
+  /* left: var(--scroll-x); */
 }
 .bar[start]:not([end]) {
   --start-color: purple;
-  /* width: calc(var(--parent-width) - var(--timeline-offset) + var(--scroll-x)); */
-  /* max-width: 100%; */
-  /* max-width: calc(100% - var(--bar-left, 0%)); */
 }
 .bar[end]:not([start]) {
   --end-color: lime;
-  /* max-width: calc(100% - var(--scroll-x)); */
-  /* left: calc(var(--timeline-offset) + var(--scroll-x)); */
-  max-width: calc(100% - var(--bar-right-percent, 0%) - var(--scroll-x));
-  --offset-left: var(--scroll-x);
-
-  width: calc(
-    var(--parent-width) - var(--timeline-offset) + var(--scroll-x) -
-      var(--bar-width, 0px) - var(--offset-left, 0px) - var(--offset-right, 0px)
-  );
-}
-.bar[start] {
-  /* left: var(--bar-left); */
+  /* --offset-left: var(--scroll-x); */
 }
 .bar[start][end] {
   --start-color: blue;
   --end-color: blue;
-
-  /* width: calc(
-    var(--parent-width) - var(--timeline-offset) + var(--scroll-x) -
-      var(--bar-width, 0px) - var(--offset-left, 0px) - var(--offset-right, 0px)
-  ); */
-  width: calc(100% - var(--offset-left) - var(--offset-right));
 }
+
 .timeline-inner {
   display: flex;
 }
