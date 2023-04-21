@@ -141,7 +141,15 @@ td {
 }
 .bar:not([start])[end] {
   --end-gradient-offset: 0px;
-  /* --end-gradient-distance: 0px; */
+  --start-gradient-offset: calc(100% - var(--scroll-x));
+
+  /* This gradient goes right to left, to ensure that small width bars look correct. */
+  background: linear-gradient(
+    to left,
+    red 0%,
+    red calc(var(--start-gradient-offset) - var(--start-gradient-distance)),
+    transparent var(--start-gradient-offset)
+  );
 }
 
 .bar:not([start]):not([end]) {
