@@ -54,23 +54,20 @@ td {
   /* position: sticky;
   left: calc(var(--timeline-offset) + var(--border-width)); */
 }
-.label,
-.bar {
-  position: relative;
-
-  /* IMPORTANT: positioned relative to the width of the timeline, rather than width of bar */
-  /* left: calc(var(--timeline-width) * var(--bar-left-ratio)); */
-  left: var(--offset-left);
-
-  /* max-width: calc(100% - var(--bar-left-percent)); */
-  /* max-width: calc(100% - calc(var(--bar-left-ratio) * 100%)); */
-}
 .bar-wrapper {
   --offset-left: calc(var(--timeline-width) * var(--bar-left-ratio));
+  --offset-right: calc(var(--timeline-width) * var(--bar-right-ratio));
 
   position: sticky;
 }
-.bar-wrapper:not([start]) {
+.bar-wrapper:not([start]):not([end]) {
+  --start-color: transparent;
+  left: calc(var(--timeline-offset) + var(--border-width));
+  --end-color: transparent;
+  width: calc(var(--parent-width) - var(--timeline-offset));
+  max-width: calc(100% - var(--scroll-x));
+}
+/* .bar-wrapper:not([start]) {
   --start-color: transparent;
   left: calc(var(--timeline-offset) + var(--border-width));
 }
@@ -78,26 +75,54 @@ td {
   --end-color: transparent;
   width: calc(var(--parent-width) - var(--timeline-offset));
   max-width: calc(100% - var(--scroll-x));
-}
+} */
 .bar-wrapper[start]:not([end]) {
   --start-color: purple;
 
   /* Working for bars with [start] and with or without a left offset. */
   width: calc(
     var(--parent-width) - var(--timeline-offset) + var(--scroll-x) -
-      var(--bar-width, 0px) - var(--offset-left, 0px)
+      var(--bar-width, 0px) - var(--offset-left, 0px) - var(--offset-right, 0px)
   );
   max-width: calc(100% - var(--bar-left-percent, 0%));
 }
 .bar-wrapper[end]:not([start]) {
   --end-color: lime;
-  max-width: calc(100% - var(--scroll-x));
+  /* max-width: calc(100% - var(--scroll-x)); */
+  /* max-width: calc(100% - var(--bar-right-percent, 0%) - var(--scroll-x));
+  --offset-left: var(--scroll-x);
+
+  width: calc(
+    var(--parent-width) - var(--timeline-offset) + var(--scroll-x) -
+      var(--bar-width, 0px) - var(--offset-left, 0px) - var(--offset-right, 0px)
+  ); */
+
+  /* left: calc(var(--timeline-offset) + var(--border-width)); */
 }
 .bar-wrapper[start][end] {
   --start-color: blue;
   --end-color: blue;
 }
+.label,
+.bar {
+  position: relative;
 
+  /* IMPORTANT: positioned relative to the width of the timeline, rather than width of bar */
+  /* left: calc(var(--timeline-width) * var(--bar-left-ratio)); */
+  left: var(--offset-left);
+  right: var(--offset-right);
+
+  /* max-width: calc(100% - var(--bar-left-percent)); */
+  /* max-width: calc(100% - calc(var(--bar-left-ratio) * 100%)); */
+}
+.label {
+  position: sticky;
+  /* left: calc(var(--timeline-offset) + var(--offset-left, 0px)); */
+  left: max(
+    calc(var(--timeline-offset) + var(--offset-left, 0px) - var(--scroll-x)),
+    var(--timeline-offset)
+  );
+}
 .bar {
   --start-color: red;
   --end-color: red;
@@ -130,6 +155,14 @@ td {
 .bar[end]:not([start]) {
   --end-color: lime;
   /* max-width: calc(100% - var(--scroll-x)); */
+  /* left: calc(var(--timeline-offset) + var(--scroll-x)); */
+  max-width: calc(100% - var(--bar-right-percent, 0%) - var(--scroll-x));
+  --offset-left: var(--scroll-x);
+
+  width: calc(
+    var(--parent-width) - var(--timeline-offset) + var(--scroll-x) -
+      var(--bar-width, 0px) - var(--offset-left, 0px) - var(--offset-right, 0px)
+  );
 }
 .bar[start] {
   /* left: var(--bar-left); */
