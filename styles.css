@@ -34,6 +34,7 @@ td {
 }
 :is(th, td):last-child {
   position: relative;
+  border-right: none;
 }
 :is(th, td):nth-child(1) {
   left: 0;
