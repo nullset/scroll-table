@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Home</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <!--
+      Need a visual blank slate?
+      Remove all code in `styles.css`!
+    -->
+    <link rel="stylesheet" href="styles.css" />
+    <script type="module" src="script.js"></script>
+  </head>
+  <body>
+    <div class="bounds">
+      <div class="parent" style="overflow: auto">
+        <div class="child" style="width: 200%">
+          <table style="table-layout: fixed; width: 100%">
+            <thead>
+              <tr>
+                <th>Column 1</th>
+                <th>Column 2</th>
+                <th>Column 3</th>
+                <th class="timeline">
+                  <div class="timeline-inner">
+                    <div>0</div>
+                    <div>1</div>
+                    <div>2</div>
+                    <div>3</div>
+                    <div>4</div>
+                    <div>5</div>
+                    <div>6</div>
+                    <div>7</div>
+                    <div>8</div>
+                    <div>9</div>
+                    <div>10</div>
+                    <div>11</div>
+                    <div>12</div>
+                    <div>13</div>
+                    <div>14</div>
+                    <div>15</div>
+                    <div>16</div>
+                    <div>17</div>
+                    <div>18</div>
+                    <div>19</div>
+                    <div>20</div>
+                    <div>21</div>
+                    <div>22</div>
+                    <div>23</div>
+                    <div>24</div>
+                    <div>25</div>
+                    <div>26</div>
+                    <div>27</div>
+                    <div>28</div>
+                    <div>29</div>
+                  </div>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                  <div class="bar-wrapper">
+                    <span class="label">No start, no end</span>
+                    <div class="bar"></div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                  <div class="bar-wrapper" start>
+                    <span class="label">start, no end</span>
+                    <div class="bar" start></div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                  <div
+                    class="bar-wrapper"
+                    start
+                    style="--bar-left-ratio: 0.1; --bar-left-percent: 10%"
+                  >
+                    <span class="label">start, no end, 10% start offset</span>
+                    <div class="bar" start></div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                  <div class="bar-wrapper" end>
+                    <span class="label">end, no start</span>
+                    <div class="bar" end></div>
+                  </div>
+                </td>
+              </tr>
+              <tr style="--bar-right: 10%">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                  <div class="bar-wrapper" end>
+                    <span class="label">end, no start, 10% end offset</span>
+                    <div class="bar" end></div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                  <div class="bar-wrapper" start end>
+                    <span class="label">start, end</span>
+                    <div class="bar" start end></div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                  <div class="bar-wrapper" start end>
+                    <span class="label">start, end, 10% offset both ends</span>
+                    <div class="bar" start end></div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                  <div class="bar-wrapper">
+                    <span>x</span>
+                    <div class="bar"></div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                  <div class="bar-wrapper">
+                    <span>x</span>
+                    <div class="bar"></div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                  <div class="bar-wrapper">
+                    <span>x</span>
+                    <div class="bar"></div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                  <div class="bar-wrapper">
+                    <span>x</span>
+                    <div class="bar"></div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                  <div class="bar-wrapper">
+                    <span>x</span>
+                    <div class="bar"></div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                  <div class="bar-wrapper">
+                    <span>x</span>
+                    <div class="bar"></div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                  <div class="bar-wrapper">
+                    <span>x</span>
+                    <div class="bar"></div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                  <div class="bar-wrapper">
+                    <span>x</span>
+                    <div class="bar"></div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                  <div class="bar-wrapper">
+                    <span>x</span>
+                    <div class="bar"></div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                  <div class="bar-wrapper">
+                    <span>x</span>
+                    <div class="bar"></div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                  <div class="bar-wrapper">
+                    <span>x</span>
+                    <div class="bar"></div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                  <div class="bar-wrapper">
+                    <span>x</span>
+                    <div class="bar"></div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                  <div class="bar-wrapper">
+                    <span>x</span>
+                    <div class="bar"></div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                  <div class="bar-wrapper">
+                    <span>x</span>
+                    <div class="bar"></div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                  <div class="bar-wrapper">
+                    <span>x</span>
+                    <div class="bar"></div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                  <div class="bar-wrapper">
+                    <span>x</span>
+                    <div class="bar"></div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                  <div class="bar-wrapper">
+                    <span>x</span>
+                    <div class="bar"></div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                  <div class="bar-wrapper">
+                    <span>x</span>
+                    <div class="bar"></div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                  <div class="bar-wrapper">
+                    <span>x</span>
+                    <div class="bar"></div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                  <div class="bar-wrapper">
+                    <span>x</span>
+                    <div class="bar"></div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                  <div class="bar-wrapper">
+                    <span>x</span>
+                    <div class="bar"></div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
