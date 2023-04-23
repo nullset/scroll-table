@@ -56,3 +56,19 @@ function foo() {
 }
 
 foo();
+
+const intersectionObs = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      console.log(entry);
+    });
+  },
+  {
+    root: parent,
+    threshold: [0, 1],
+  }
+);
+
+parent.querySelectorAll(":scope .bar").forEach((bar) => {
+  intersectionObs.observe(bar);
+});
